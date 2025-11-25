@@ -7,6 +7,7 @@ option go_package="./user;userpb";
 service User{
     rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
     rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+    rpc GetUsers(GetUsersRequest) returns (GetUserResponse);
 }
 
 message CreateUserRequest{
@@ -27,4 +28,21 @@ message DeleteUserRequest{
 
 message DeleteUserResponse{
     bool success = 1;
+}
+
+message GetUsersRequest{
+    repeated string fields = 1;
+}
+
+message GetUserResponse{
+    repeated User users = 1;
+}
+
+message User{
+    option string id = 1;
+    option string username = 2;
+	option string name = 3;
+    option string bio = 4;
+	option string avatar_url = 5;
+	option string last_seen = 6;
 }
