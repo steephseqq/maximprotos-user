@@ -31,7 +31,8 @@ message DeleteUserResponse{
 }
 
 message GetUsersRequest{
-    repeated string fields = 1;
+    repeated string userIDs = 1;
+    repeated string fields = 2;
 }
 
 

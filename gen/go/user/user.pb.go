@@ -7,12 +7,11 @@
 package userpb
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -232,7 +231,8 @@ func (x *DeleteUserResponse) GetSuccess() bool {
 
 type GetUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Fields        []string               `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty"`
+	UserIDs       []string               `protobuf:"bytes,1,rep,name=userIDs,proto3" json:"userIDs,omitempty"`
+	Fields        []string               `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -265,6 +265,13 @@ func (x *GetUsersRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetUsersRequest.ProtoReflect.Descriptor instead.
 func (*GetUsersRequest) Descriptor() ([]byte, []int) {
 	return file_user_user_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetUsersRequest) GetUserIDs() []string {
+	if x != nil {
+		return x.UserIDs
+	}
+	return nil
 }
 
 func (x *GetUsersRequest) GetFields() []string {
@@ -418,9 +425,10 @@ const file_user_user_proto_rawDesc = "" +
 	"\x11DeleteUserRequest\x12\x12\n" +
 	"\x04UUID\x18\x01 \x01(\tR\x04UUID\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\")\n" +
-	"\x0fGetUsersRequest\x12\x16\n" +
-	"\x06fields\x18\x01 \x03(\tR\x06fields\"9\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"C\n" +
+	"\x0fGetUsersRequest\x12\x18\n" +
+	"\auserIDs\x18\x01 \x03(\tR\auserIDs\x12\x16\n" +
+	"\x06fields\x18\x02 \x03(\tR\x06fields\"9\n" +
 	"\x0fGetUserResponse\x12&\n" +
 	"\x05users\x18\x01 \x03(\v2\x10.user.UserEntityR\x05users\"\xfa\x01\n" +
 	"\n" +
