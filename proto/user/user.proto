@@ -36,14 +36,14 @@ message GetUsersRequest{
 
 
 message GetUserResponse{
-    repeated User users = 1;
+    repeated UserEntity users = 1;
 }
 
-message User{
-    option string id = 1;
-    option string username = 2;
-	option string name = 3;
-    option string bio = 4;
-	option string avatar_url = 5;
-	option string last_seen = 6;
+message UserEntity{
+    optional string id = 1;
+    optional string username = 2;
+	optional  string name = 3;
+    optional string bio = 4;
+	optional string avatar_url = 5;
+	optional string last_seen = 6;
 }
