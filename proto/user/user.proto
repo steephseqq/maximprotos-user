@@ -33,6 +33,7 @@ message DeleteUserResponse{
 message GetUsersRequest{
     repeated string userIDs = 1;
     repeated string fields = 2;
+    string parameter = 3; // ID or Username
 }
 
 

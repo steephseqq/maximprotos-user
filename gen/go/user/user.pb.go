@@ -233,6 +233,7 @@ type GetUsersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserIDs       []string               `protobuf:"bytes,1,rep,name=userIDs,proto3" json:"userIDs,omitempty"`
 	Fields        []string               `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty"`
+	Parameter     string                 `protobuf:"bytes,3,opt,name=parameter,proto3" json:"parameter,omitempty"` // ID or Username
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -279,6 +280,13 @@ func (x *GetUsersRequest) GetFields() []string {
 		return x.Fields
 	}
 	return nil
+}
+
+func (x *GetUsersRequest) GetParameter() string {
+	if x != nil {
+		return x.Parameter
+	}
+	return ""
 }
 
 type GetUserResponse struct {
@@ -425,10 +433,11 @@ const file_user_user_proto_rawDesc = "" +
 	"\x11DeleteUserRequest\x12\x12\n" +
 	"\x04UUID\x18\x01 \x01(\tR\x04UUID\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"C\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"a\n" +
 	"\x0fGetUsersRequest\x12\x18\n" +
 	"\auserIDs\x18\x01 \x03(\tR\auserIDs\x12\x16\n" +
-	"\x06fields\x18\x02 \x03(\tR\x06fields\"9\n" +
+	"\x06fields\x18\x02 \x03(\tR\x06fields\x12\x1c\n" +
+	"\tparameter\x18\x03 \x01(\tR\tparameter\"9\n" +
 	"\x0fGetUserResponse\x12&\n" +
 	"\x05users\x18\x01 \x03(\v2\x10.user.UserEntityR\x05users\"\xfa\x01\n" +
 	"\n" +
