@@ -31,15 +31,14 @@ message DeleteUserResponse{
 }
 
 message GetUsersRequest{
-    oneof user_ids{
-        UserIDList user_id_list = 1;
+    oneof identifier {
+        UserIdList user_id_list = 1;
         string username = 2; 
     }
     repeated string fields = 3;
-    string parameter = 4; // ID or Username
 }
 
-message UserIDList {
+message UserIdList {
     repeated string user_ids = 1;
 }
 
