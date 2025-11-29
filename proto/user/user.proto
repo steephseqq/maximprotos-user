@@ -31,11 +31,17 @@ message DeleteUserResponse{
 }
 
 message GetUsersRequest{
-    repeated string userIDs = 1;
-    repeated string fields = 2;
-    string parameter = 3; // ID or Username
+    oneof user_ids{
+        UserIDList user_id_list = 1;
+        string username = 2; 
+    }
+    repeated string fields = 3;
+    string parameter = 4; // ID or Username
 }
 
+message UserIDList {
+    repeated string user_ids = 1;
+}
 
 message GetUserResponse{
     repeated UserEntity users = 1;
